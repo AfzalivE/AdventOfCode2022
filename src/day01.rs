@@ -1,38 +1,29 @@
 pub fn part1(input: String) {
     let inputs = input.split("\n\n");
     let option = inputs
-        .into_iter()
-        .enumerate()
-        .map(|(i1, x2)| {
+        .map(|x2| {
             let sum = x2.split("\n").map(|x1| { x1.parse::<u32>().unwrap() }).sum::<u32>();
-            (i1.to_string(), sum)
+            sum
         })
-        .max_by(|(i2, x3), (i3, x4)| {
+        .max_by(| x3, x4| {
             x3.cmp(x4)
         });
-    let (i, opt) = option.unwrap();
 
-    println!("sum: {}", opt);
+    println!("sum: {}", option.unwrap());
 }
 
-pub fn part1_b(input: String) {
+pub fn part2(input: String) {
     let inputs = input.split("\n\n");
-    // TODO:fix this
     let mut option = inputs
-        .into_iter()
-        .enumerate()
-        .map(|(i1, x2)| {
-            let sum = x2.split("\n").map(|x1| { x1.parse::<u32>().unwrap() }).sum::<u32>();
-            println!("index, sum: {}, {}", i1, sum);
-            (i1.to_string(), sum)
+        .map(|x| {
+            let sum = x.split("\n").map(|x1| { x1.parse::<u32>().unwrap() }).sum::<u32>();
+            sum
         })
         .collect::<Vec<_>>();
 
-    option.sort_by(|(_, x3), (_, x4)| {
-        x4.cmp(x3)
-    });
+    option.sort_by(|x3, x4| { x4.cmp(x3) });
 
-    // let top3 = option.take(3).unwrap();
+    let sum_top3 = option.into_iter().take(3).sum::<u32>();
 
-    println!("index, sum: {:?}", option);
+    println!("index, sum: {:?}", sum_top3);
 }
