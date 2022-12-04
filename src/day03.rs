@@ -1,5 +1,4 @@
 use std::collections::HashSet;
-use std::ops::Index;
 
 pub fn part1(input: String) {
     let inputs = input.split("\n");

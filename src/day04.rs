@@ -1,4 +1,4 @@
-use std::ops::{Range, RangeFrom, RangeInclusive};
+use std::ops::{RangeInclusive};
 
 pub fn part1(input: String) {
     let inputs = input.split("\n");
